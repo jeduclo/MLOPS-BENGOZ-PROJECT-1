@@ -5,7 +5,8 @@ FROM python:slim
 
 # Set environment variables to prevent Python from writing .pyc files & Ensure Python output is not buffered
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    GIT_PYTHON_REFRESH=quiet
 
 # Set the working directory
 WORKDIR /app
@@ -21,9 +22,6 @@ COPY . .
 
 # Install the package in editable mode
 RUN pip install --no-cache-dir -e .
-
-# Train the model before running the application
-RUN python pipeline/training_pipeline.py
 
 # Expose the port that Flask will run on
 EXPOSE 5000
