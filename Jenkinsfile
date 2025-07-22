@@ -16,17 +16,17 @@ pipeline{
         }
     }
 
-        stage('Setting up our virtual environment and instaling dependencies'){
-            steps{
-                script{
-                    echo 'Setting up our virtual environment and instaling dependencies.....'
-                    sh '''
-                    python -m venv ${VENV_DIR}
-                    . ${VENV_DIR}/bin/activate
-                    pip install --upgrade pip
-                    pip install -e .
-                    '''
-                }
+    stage('Setting up our virtual environment and instaling dependencies'){
+        steps{
+            script{
+                echo 'Setting up our virtual environment and instaling dependencies.....'
+                sh '''
+                python -m venv ${VENV_DIR}
+                . ${VENV_DIR}/bin/activate
+                pip install --upgrade pip
+                pip install -e .
+                '''
             }
         }
+    }
 }
